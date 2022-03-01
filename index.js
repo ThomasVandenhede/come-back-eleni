@@ -15,7 +15,12 @@ const tick = () => {
   const minutes = timeLeft.getMinutes();
   const seconds = timeLeft.getSeconds();
   if (countdownElement) {
-    countdownElement.innerHTML = `${days} days ${hours}h ${minutes}min and ${seconds}s`;
+    countdownElement.innerHTML = `
+      <span>${days}&nbsp;days</span>
+      <span>${hours}&nbsp;hours</span>
+      <span>${minutes}&nbsp;min</span>
+      <span>${seconds}&nbsp;seconds</span>
+    `;
   }
   rafId = requestAnimationFrame(tick);
 };

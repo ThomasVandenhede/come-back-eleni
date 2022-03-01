@@ -55,6 +55,14 @@
 
     .countdown {
       font-size: 42px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media screen and (min-width: 680px) {
+      .countdown {
+        display: block;
+      }
     }
   </style>
 </head>
@@ -64,7 +72,7 @@
     <h1>Time left before <strong>Eleni</strong> 👩🏼‍🎨<br /> comes back<br /> to Paris <small>(and me ❤️)</small></h1>
     <p id="countdown" class="countdown"></p>
 
-    <p>(If this sounds like too long of a wait, here's an octopus 🐙.<br />Did you know those were reaaally smart?)</p>
+    <p>(If this sounds like too long of a wait, here's an octopus&nbsp;🐙.<br />Did you know those were reaaally smart?)</p>
   </main>
 
   <script src="index.js" type="module"></script>
