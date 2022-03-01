@@ -1,0 +1,134 @@
+form {
+  display: flex;
+  align-items: center;
+}
+
+form > span {
+  margin-left: 16px;
+  margin-right: 16px;
+  font-weight: bold;
+  font-style: italic;
+  font-size: 18px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: hsla(260, 100%, 50%, 0.5);
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+:root {
+  --highlight-color: hsla(260, 100%, 50%, 0.3);
+}
+
+body {
+  color: #333;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  padding: 16px;
+  font-family: Hubballi, Arial, Helvetica, sans-serif;
+  text-align: center;
+}
+
+h1 strong {
+  position: relative;
+}
+
+h1 strong::before {
+  content: "";
+  position: absolute;
+  background-color: var(--highlight-color);
+  height: 50%;
+  width: 110%;
+  transform: translate(-50%, 20%);
+  top: 50%;
+  left: 50%;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+p {
+  font-size: 16px;
+}
+
+.countdown {
+  font-size: 36px;
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (min-width: 680px) {
+  .countdown {
+    font-size: 42px;
+    display: block;
+  }
+}
+
+.location-hint {
+  display: none;
+}

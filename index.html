@@ -7,70 +7,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Has Eleni returned to France yet?</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>👩🏼‍🎨</text></svg>">
-  <link rel="stylesheet" href="normalize.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Hubballi&display=swap" rel="stylesheet">
-  <style>
-    body {
-      color: #333;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    main {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      height: 100%;
-      padding: 16px;
-      font-family: Hubballi, Arial, Helvetica, sans-serif;
-      text-align: center;
-    }
-
-    strong {
-      position: relative;
-    }
-
-    strong::before {
-      content: "";
-      position: absolute;
-      background-color: hsla(260, 100%, 50%, 0.3);
-      height: 50%;
-      width: 110%;
-      transform: translate(-50%, 20%);
-      top: 50%;
-      left: 50%;
-    }
-
-    h1 {
-      font-size: 24px;
-    }
-
-    p {
-      font-size: 16px;
-    }
-
-    .countdown {
-      font-size: 36px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    @media screen and (min-width: 680px) {
-      .countdown {
-        font-size: 42px;
-        display: block;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="./stylesheets/normalize.css">
+  <link rel="stylesheet" href="./stylesheets/style.css">
 </head>
 
 <body>
   <main>
-    <h1>Time left before <strong>Eleni</strong> 👩🏼‍🎨<br /> comes back<br /> to Paris <small>(and me ❤️)</small></h1>
+    <form>
+      <span>Hers</span>
+      <label class="switch">
+        <input type="checkbox" checked>
+        <span class="slider round"></span>
+      </label>
+      <span>His</span>
+    </form>
+
+    <p id="location-hint" class="location-hint"></p>
+
+    <h1 id="title"></h1>
     <p id="countdown" class="countdown"></p>
 
     <p>(If this sounds like too long of a wait, here's an octopus&nbsp;🐙.<br />Did you know those were reaaally smart?)</p>

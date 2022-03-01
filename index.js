@@ -3,9 +3,19 @@ import {
   MS_PER_MINUTE,
   MS_PER_HOUR,
   MS_PER_DAY,
+  OSLO_COORDS,
+  PARIS_COORDS,
 } from "./constants.js";
+import { geolocate, distance } from "./geoloc.js";
 
+// DOM
+const root = document.documentElement;
 const countdownElement = document.getElementById("countdown");
+const geolocHintElement = document.getElementById("location-hint");
+const toggleElement = document.querySelector("input[type=checkbox]");
+const titleElement = document.getElementById("title");
+
+// Other
 let rafId;
 
 const randInt = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
@@ -56,5 +66,60 @@ const tick = () => {
   rafId = requestAnimationFrame(tick);
 };
 
+geolocate(function (position) {
+  geolocHintElement.style.display = "block";
+
+  const distanceOlso = distance(
+    position.coords.latitude,
+    position.coords.longitude,
+    OSLO_COORDS.latitude,
+    OSLO_COORDS.longitude
+  );
+  const distanceParis = distance(
+    position.coords.latitude,
+    position.coords.longitude,
+    PARIS_COORDS.latitude,
+    PARIS_COORDS.longitude
+  );
+
+  if (distanceOlso < distanceParis) {
+    // Eleni
+    toggleElement.checked = false;
+    geolocHintElement.innerHTML =
+      "(based on your current location you are likely to be <strong>Eleni</strong>)";
+  } else {
+    // Thomas
+    toggleElement.checked = true;
+    geolocHintElement.innerHTML =
+      "(based on your current location you are likely to be <strong>Thomas</strong>)";
+  }
+});
+
+const updateTitleText = () => {
+  if (toggleElement.checked) {
+    titleElement.innerHTML = `
+      Time left before <strong>Eleni</strong> 👩🏼‍🎨<br /> comes back<br /> to Paris <small>(and me ❤️)</small>
+    `;
+  } else {
+    titleElement.innerHTML = `
+      Time left before <strong>Thomas</strong> takes me in his arms<br /><small>(and kisses me ❤️)</small>
+    `;
+  }
+};
+
+const updateColors = () => {
+  if (toggleElement.checked) {
+    root.style.setProperty("--highlight-color", "hsla(260, 100%, 50%, 0.3)");
+  } else {
+    root.style.setProperty("--highlight-color", "hsla(207, 90%, 54%, 0.3)");
+  }
+};
+
+toggleElement.addEventListener("change", (event) => {
+  updateTitleText();
+  updateColors();
+});
+
 document.body.style.backgroundColor = `hsl(${randInt(0, 360)}, 100%, 80%)`;
+updateTitleText();
 rafId = requestAnimationFrame(tick);
