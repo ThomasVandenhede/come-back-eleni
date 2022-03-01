@@ -1,6 +1,10 @@
 const countdownElement = document.getElementById("countdown");
 let rafId;
 
+const randInt = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
+
+document.body.style.backgroundColor = `hsl(${randInt(0, 360)}, 100%, 80%)`;
+
 const tick = () => {
   const returnDate = new Date("March 3, 2022 18:00:00 UTC");
   const now = Date.now();
