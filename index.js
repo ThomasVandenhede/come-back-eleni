@@ -93,6 +93,8 @@ geolocate(function (position) {
     geolocHintElement.innerHTML =
       "(based on your current location you are likely to be <strong>Thomas</strong>)";
   }
+  updateTitleText();
+  updateColors();
 });
 
 const updateTitleText = () => {
@@ -102,7 +104,7 @@ const updateTitleText = () => {
     `;
   } else {
     titleElement.innerHTML = `
-      Time left before <strong>Thomas</strong> takes me in his arms<br /><small>(and kisses me ❤️)</small>
+      Time left before <strong>Thomas</strong><br /> takes me in his (manly) arms<br /><small>(and gives me that long awaited kiss ❤️)</small>
     `;
   }
 };
